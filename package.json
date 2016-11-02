@@ -1,7 +1,7 @@
 {
   "name": "testable-error",
   "version": "0.0.0",
-  "description": "Create testable errors",
+  "description": "Create testable javascript errors",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
