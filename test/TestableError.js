@@ -42,4 +42,21 @@ describe('createTestableErrorClass', () => {
 
   })
 
+  describe('readme examples', () => {
+
+    it('should pass', () => {
+    
+      const MySimpleError = createTestableErrorClass('MySimpleError')
+      const MyTemplatedError = createTestableErrorClass('MyTemplatedError', '%s %s !')
+       
+       
+      expect(function(){
+        throw new MySimpleError('hello', 'world')
+      }).to.throw(MySimpleError)
+       
+      expect(new MyTemplatedError('hello', 'world').message).to.equal('hello world !')
+
+    })
+  })
+
 })
