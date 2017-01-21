@@ -40,7 +40,7 @@ describe('createTestableErrorClass', () => {
     })
 
     it('should have correct message', () => {
-      expect(myTestableError.message).to.equal('My custom message: hola amigo')
+      expect(myTestableError.message).to.equal('MyTestableError: My custom message: hola amigo')
     })
 
     it('should throw MyTestableError', () => {
