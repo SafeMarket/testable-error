@@ -12,20 +12,27 @@ describe('createTestableErrorClass', () => {
  describe('MyTestableError', () => {
 
   let MyTestableError
+  let YourTestableError
   let myTestableError
 
-  it('should be created', () => {
-    MyTestableError = createTestableErrorClass('MyTestableError', 'My custom message: %s %s')
+
+  it('should create MyTestableError and YourTestableError', () => {
+    MyTestableError = createTestableErrorClass('MyTestableError')
+    YourTestableError = createTestableErrorClass('YourTestableError')
   })
 
   describe('myTestableError', () => {
 
     it('should instantiate', () => {
-      myTestableError = new MyTestableError('hola', 'amigo')
+      myTestableError = new MyTestableError('My custom message: hola amigo')
     })
 
     it('should be instance of MyTestableError', () => {
       expect(myTestableError).to.be.instanceOf(MyTestableError)
+    })
+
+    it('should NOT be instance of YourTestableError', () => {
+      expect(myTestableError).to.not.be.instanceOf(YourTestableError)
     })
 
     it('should be instance of Error', () => {
@@ -36,8 +43,12 @@ describe('createTestableErrorClass', () => {
       expect(myTestableError.message).to.equal('My custom message: hola amigo')
     })
 
-    it('should throw', () => {
+    it('should throw MyTestableError', () => {
       expect(() => { throw myTestableError }).to.throw(MyTestableError)
+    })
+
+    it('should NOT throw MyTestableError', () => {
+      expect(() => { throw myTestableError }).to.not.throw(YourTestableError)
     })
 
   })
@@ -45,16 +56,14 @@ describe('createTestableErrorClass', () => {
   describe('readme examples', () => {
 
     it('should pass', () => {
-    
+
+      const createTestableErrorClass = require('testable-error');
+
       const MySimpleError = createTestableErrorClass('MySimpleError')
-      const MyTemplatedError = createTestableErrorClass('MyTemplatedError', '%s %s !')
-       
-       
+
       expect(function(){
-        throw new MySimpleError('hello', 'world')
+        throw new MySimpleError('oh no!')
       }).to.throw(MySimpleError)
-       
-      expect(new MyTemplatedError('hello', 'world').message).to.equal('hello world !')
 
     })
   })

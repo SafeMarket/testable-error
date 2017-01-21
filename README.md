@@ -16,17 +16,11 @@ $ npm i testable-error --save-dev
 const createTestableErrorClass = require('testable-error');
 
 const MySimpleError = createTestableErrorClass('MySimpleError')
-const MyTemplatedError = createTestableErrorClass('MyTemplatedError', '%s %s !')
-
 
 expect(function(){
-  throw new MySimpleError('hello', 'world')
+  throw new MySimpleError('oh no!')
 }).to.throw(MySimpleError)
 // ✔ ok
-
-expect(new MyTemplatedError('hello', 'world').message).to.equal('hello world !')
-// ✔ ok
-```
 
 ## Running tests
 
