@@ -1,6 +1,6 @@
 module.exports = function createTestableErrorClass(name) {
   function TestableError(message){
-    this.message = `${this.name}: ${message}`
+    this.message = message
     this.error = new Error()
     this.stack = this.error.stack
   }

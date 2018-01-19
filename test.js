@@ -1,5 +1,5 @@
 const expect = require('chai').expect
-const createTestableErrorClass = require('../')
+const createTestableErrorClass = require('./')
 
 describe('createTestableErrorClass', () => {
 
@@ -40,7 +40,7 @@ describe('createTestableErrorClass', () => {
     })
 
     it('should have correct message', () => {
-      expect(myTestableError.message).to.equal('MyTestableError: My custom message: hola amigo')
+      expect(myTestableError.message).to.equal('My custom message: hola amigo')
     })
 
     it('should throw MyTestableError', () => {
@@ -56,8 +56,6 @@ describe('createTestableErrorClass', () => {
   describe('readme examples', () => {
 
     it('should pass', () => {
-
-      const createTestableErrorClass = require('testable-error');
 
       const MySimpleError = createTestableErrorClass('MySimpleError')
 
